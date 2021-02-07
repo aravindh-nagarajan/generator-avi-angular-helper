@@ -1,19 +1,14 @@
 {
-  "name": "generator-avi-angular-helper",
-  "version": "0.0.0",
+  "name": "@aravindh.n/generator-avi-angular-helper",
+  "version": "0.0.1",
   "description": "will add later",
-  "homepage": "",
-  "author": {
-    "name": "Aravindh Nagarajan",
-    "email": "aravindhn@vmware.com",
-    "url": ""
-  },
+  "homepage": "https://github.com/aravindh-nagarajan/generator-avi-angular-helper#readme",
+  "author": "Aravindh Nagarajan <aravindhn@vmware.com>",
   "files": [
     "generators"
   ],
   "main": "generators/index.js",
   "keywords": [
-    "",
     "yeoman-generator"
   ],
   "devDependencies": {
@@ -76,6 +71,12 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "aravindh-nagarajan/generator-avi-angular-helper",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aravindh-nagarajan/generator-avi-angular-helper.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aravindh-nagarajan/generator-avi-angular-helper/issues"
+  }
 }
