@@ -1,6 +1,5 @@
 # generator-avi-angular-helper [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> will add later
-
+> Scaffolding tool to create components and module folders.
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and generator-avi-angular-helper using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
