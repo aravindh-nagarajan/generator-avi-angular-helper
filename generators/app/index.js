@@ -17,13 +17,25 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'moduleName',
         message: 'Please enter the module name?',
-        required: true,
+        validate: async function(input) {
+            if (!input) {
+                return 'Sorry, Need module name to proceed.';
+            }
+
+            return true;
+        },
       },
       {
         type: 'input',
         name: 'componentName',
         message: 'Please enter the Component name?',
-        required: true,
+        validate: async function(input) {
+            if (!input) {
+                return 'Sorry, Need component name to proceed.';
+            }
+
+            return true;
+        },
       }
     ];
 
