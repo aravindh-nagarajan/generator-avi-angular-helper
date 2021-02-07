@@ -4,6 +4,7 @@ const Generator = require('yeoman-generator');
 const fs = require("fs");
 const fsPromises = fs.promises;
 const stringUtils = require('./string-utils.js');
+
 const angularFolderPath = 'src/angular/modules';
 
 module.exports = class extends Generator {
