@@ -1,6 +1,6 @@
 {
   "name": "generator-avi-angular-helper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Scaffolding tool to create components and module folders.",
   "homepage": "https://github.com/aravindh-nagarajan/generator-avi-angular-helper#readme",
   "author": "Aravindh Nagarajan <aravindhn@vmware.com>",
