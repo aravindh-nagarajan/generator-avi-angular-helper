@@ -16,13 +16,24 @@ Then generate your new project:
 yo avi-angular-helper
 ```
 
-## Getting To Know Yeoman
+As of now, It can create modules and components in angular folder.
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
+```
+yo avi-angular-helper
+? Please enter the module name? ngTestModule
+? Please enter the Component name? ngTestComponent
+Setting template name variables...
+Setting path variables...
+Creating files now... :)
+New module - creating module.ts file now
+   create  ..\ng-test-module\components\ng-test-component\ng-test-component.component.ts
+   create ..\ng-test-module\components\ng-test-component\ng-test-component.component.html
+   create ..\ng-test-module\components\ng-test-component\ng-test-component.component.less
+   create ..\ng-test-module\components\ng-test-component\index.ts
+   create ..\ng-test-module\ng-test-module.module.ts
+   create ..\ng-test-module\index.ts
+   create ..\ng-test-module\components\index.ts
+```
 ## License
 
 MIT © [Aravindh Nagarajan]()
