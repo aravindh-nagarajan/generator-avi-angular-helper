@@ -17,12 +17,13 @@ module.exports = class extends Generator {
         type: 'input',
         name: 'moduleName',
         message: 'Please enter the module name?',
-        default: '',
+        required: true,
       },
       {
         type: 'input',
         name: 'componentName',
         message: 'Please enter the Component name?',
+        required: true,
       }
     ];
 
