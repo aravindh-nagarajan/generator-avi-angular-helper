@@ -1,6 +1,6 @@
 /**
  * Module containing <%= moduleName %> related components.
- * @module <%= ngModuleName %>Module
+ * @module <%= ngModuleName %>
  * @preferred
  */
 
@@ -19,13 +19,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {
-  <%= ngComponentName %>Component,
+  <%= ngComponentName %>,
 } from '.';
 
 const <%= moduleName %>Components = [
-  <%= ngComponentName %>Component,
+  <%= ngComponentName %>,
 ];
 
+/**
+ * @description
+ *
+ * @author <%= authorName %>
+ */
 @NgModule({
   declarations: [
     ...<%= moduleName %>Components,
@@ -36,4 +41,4 @@ const <%= moduleName %>Components = [
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
-export class <%= ngModuleName %>Module {}
+export class <%= ngModuleName %> {}

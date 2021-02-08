@@ -16,7 +16,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'moduleName',
-        message: 'Please enter the module name?',
+        message: 'Please enter the module name? (in camelCase)',
         validate: async function(input) {
             if (!input) {
                 return 'Sorry, Need module name to proceed.';
@@ -28,7 +28,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'componentName',
-        message: 'Please enter the Component name?',
+        message: 'Please enter the Component name? (in camelCase)',
         validate: async function(input) {
             if (!input) {
                 return 'Sorry, Need component name to proceed.';
@@ -36,7 +36,12 @@ module.exports = class extends Generator {
 
             return true;
         },
-      }
+      }, {
+        type: 'input',
+        name: 'authorName',
+        message: 'Please enter your name?',
+        default: '',
+      },
     ];
 
     this.config = await this.prompt(prompts);
@@ -74,7 +79,7 @@ module.exports = class extends Generator {
     this.ngComponentName =
       `${stringUtils.capitalizeFirstLetter(componentName)}Component`;
     this.ngModuleName =
-      `${stringUtils.capitalizeFirstLetter(moduleName)}Component`;
+      `${stringUtils.capitalizeFirstLetter(moduleName)}Module`;
 
     this.moduleFolderPath = `${angularFolderPath}/${this.moduleNameInDashCase}`;
     this.moduleFilePath = `${this.moduleFolderPath}/${this.moduleNameInDashCase}.module.ts`;
@@ -172,7 +177,7 @@ module.exports = class extends Generator {
    * @private
    */
   _createComponentFiles() {
-    const { moduleName } = this.config;
+    const { moduleName, authorName } = this.config;
 
     this._createNewFile(
       this.componentTsTemplateName,
@@ -182,6 +187,7 @@ module.exports = class extends Generator {
         ngModuleName: this.ngModuleName,
         componentName: this.componentNameInDashCase,
         ngComponentName: this.ngComponentName,
+        authorName,
       }
     );
 
@@ -215,7 +221,7 @@ module.exports = class extends Generator {
    * @private
    */
   _createNewModuleFile() {
-    const { moduleName, componentName } = this.config;
+    const { moduleName, authorName } = this.config;
 
     this._createNewFile(
       this.moduleTemplateName,
@@ -223,8 +229,8 @@ module.exports = class extends Generator {
       {
         moduleName,
         ngModuleName: this.ngModuleName,
-        componentName,
         ngComponentName: this.ngComponentName,
+        authorName,
       }
     );
   }
@@ -249,9 +255,22 @@ module.exports = class extends Generator {
     this.log(`Importing ${ngComponentName} to module: ${moduleName}`);
 
     // Import component
-    moduleFileContent = moduleFileContent
-      .replace(/import \{([^;*]*)\} from \'\.\'/,
-        `import {$1\t${ngComponentName},\n} from '.'`)
+    if (/import \{\r\n([^;*]*)\} from \'\.\'/.test(moduleFileContent)) {
+
+      moduleFileContent = moduleFileContent
+        .replace(/import \{([^;*]*)\} from \'\.\'/,
+            `import {$1\t${ngComponentName},\n} from '.'`);
+    } else if (moduleFileContent.match(/import \{([^;*]*)\} from \'\.\'/)) {
+
+      moduleFileContent = moduleFileContent
+        .replace(/import \{\s([^;*]*)\s\} from \'\.\'/,
+            `import {\r\n\t$1,\n\t${ngComponentName},\n} from '.'`);
+    } else {
+      this.log(`Unable to import component, returning now`);
+
+      return;
+    }
+
 
     const moduleComponentListVariableName = `${moduleName}Components`;
 

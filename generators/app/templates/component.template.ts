@@ -1,5 +1,5 @@
 /**
- * @module <%= ngModuleName %>Module
+ * @module <%= ngModuleName %>
  */
 
 /***************************************************************************
@@ -12,6 +12,11 @@ import { Component } from '@angular/core';
 
 import './<%= componentName %>.component.less';
 
+/**
+ * @description
+ *
+ * @author <%= authorName %>
+ */
 @Component({
     selector: '<%= componentName %>',
     templateUrl: './<%= componentName %>.component.html',
