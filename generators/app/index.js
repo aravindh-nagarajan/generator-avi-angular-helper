@@ -172,7 +172,7 @@ module.exports = class extends Generator {
    * @private
    */
   _createComponentFiles() {
-    const { moduleName, componentName } = this.config;
+    const { moduleName } = this.config;
 
     this._createNewFile(
       this.componentTsTemplateName,
@@ -180,7 +180,7 @@ module.exports = class extends Generator {
       {
         moduleName,
         ngModuleName: this.ngModuleName,
-        componentName,
+        componentName: this.componentNameInDashCase,
         ngComponentName: this.ngComponentName,
       }
     );
@@ -189,7 +189,7 @@ module.exports = class extends Generator {
       this.componentHtmlTemplateName,
       `${this.componentHtmlFilePath}`,
       {
-       componentName,
+       componentName: this.componentNameInDashCase,
       }
     );
 
@@ -197,7 +197,7 @@ module.exports = class extends Generator {
       this.componentLessTemplateName,
       `${this.componentLessFilePath}`,
       {
-       componentName,
+       componentName: this.componentNameInDashCase,
       }
     );
 
